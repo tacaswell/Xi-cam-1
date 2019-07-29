@@ -55,7 +55,6 @@ after_success:
   - cd /home/travis/build/synchrotrons/Xi-cam
   - pip install codecov --upgrade  # add coverage integration service
   - codecov
-  - pip install coveralls --upgrade  # add another coverage integration service
   - coveralls
 
 deploy:
