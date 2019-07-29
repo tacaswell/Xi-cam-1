@@ -31,25 +31,21 @@ before_install:
 install:
   - pip install --upgrade attrs>=17.4.0 # travis python3.6 has attrs 17.3.0 installed
   - pip install --upgrade pip setuptools wheel
-  - pip install PyQt5
-  - pip install pyinstaller
-  - pip install coveralls pytest
   - pip install git+https://github.com/lbl-camera/Xi-cam.core.git
   - pip install git+https://github.com/lbl-camera/Xi-cam.plugins.git
   - pip install git+https://github.com/lbl-camera/Xi-cam.gui.git
-  - pip install .[pyqt5,docs,tests]
+  - pip install .[pyqt5,docs,tests,freeze]
 
 script:
-  - pip install pylint coverage
   - 'pylint xicam --errors-only || :'
   - sh -e /etc/init.d/xvfb start
   - sleep 3
   - 'pytest . || :'
-  - pip install -e .[dev]
   - (cd docs && make html)
   - python setup.py install
   - if [ $TRAVIS_OS_NAME = "windows"]; then
     pyinstaller.exe Xi-cam/Xi-cam.spec
+
 after_success:
   - cd /home/travis/build/synchrotrons/Xi-cam
   - pip install codecov --upgrade  # add coverage integration service

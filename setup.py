@@ -89,9 +89,10 @@ setup(
     # $ pip install -e .[dev,tests]
     extras_require={
         'docs': ['sphinx', 'recommonmark', 'sphinx_bootstrap_theme'],
-        'tests': ['pytest', 'coverage', 'coveralls', 'codecov'],
+        'tests': ['pytest', 'coverage', 'coveralls', 'codecov', 'pylint'],
         'pyqt5': ['pyqt5'],
         'PySide2': ['PySide2'],
+        'freeze': ['pyinstaller']
     },
 
     # If there are data files included in your packages that need to be
