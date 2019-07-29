@@ -3,6 +3,8 @@ matrix:
     - os: linux
       language: python
       python: 3.7
+      services:
+        - xvfb
     - os: windows
       language: shell
       before_install:
@@ -43,7 +45,6 @@ install:
 
 script:
   - 'pylint xicam --errors-only || :'
-  - sh -e /etc/init.d/xvfb start
   - sleep 3
   - 'pytest . || :'
   - (cd docs && make html)
