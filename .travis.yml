@@ -12,6 +12,8 @@ matrix:
         - python -m venv $HOME/venv
         - dir venv
         - source $HOME/venv/Scripts/activate
+      after_script:
+        - pyinstaller.exe Xi-cam/Xi-cam.spec
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
 
 
@@ -46,16 +48,11 @@ install:
 
 script:
   - 'pylint xicam --errors-only || :'
-  - sleep 3
   - 'pytest . || :'
   - (cd docs && make html)
   - python setup.py install
-  - if [ $TRAVIS_OS_NAME = "windows"]; then
-    pyinstaller.exe Xi-cam/Xi-cam.spec
 
 after_success:
-  - cd /home/travis/build/synchrotrons/Xi-cam
-  - pip install codecov --upgrade  # add coverage integration service
   - codecov
   - coveralls
 
