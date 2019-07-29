@@ -5,12 +5,14 @@ matrix:
       python: 3.7
       services:
         - xvfb
+      before_install:
+        - pip install --upgrade pip  # doesn't work on windows
     - os: windows
       language: shell
       before_install:
         - choco install python
         - python -m venv $HOME/venv
-        - dir
+        - dir ..
         - source $HOME/venv/Scripts/activate
       after_script:
         - pyinstaller.exe Xi-cam/Xi-cam.spec
@@ -37,7 +39,7 @@ before_install:
 
 install:
   - pip install --upgrade attrs>=17.4.0 # travis python3.6 has attrs 17.3.0 installed
-  - pip install --upgrade pip setuptools wheel
+  - pip install --upgrade setuptools wheel
   - git clone https://github.com/lbl-camera/Xi-cam.core.git
   - git clone https://github.com/lbl-camera/Xi-cam.plugins.git
   - git clone https://github.com/lbl-camera/Xi-cam.gui.git
