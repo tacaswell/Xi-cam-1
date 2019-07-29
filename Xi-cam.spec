@@ -51,7 +51,7 @@ for data in zip(datas_dst, datas_src):
     print(data)
 
 a = Analysis(['run_xicam.py'],
-             pathex=['C:\\Users\\rp\\PycharmProjects\\Xi-cam'],
+             pathex=[os.getenv('HOME']),
              binaries=[],
              datas=zip(datas_src, datas_dst),
              hiddenimports=['pandas._libs.tslibs.timedeltas',
