@@ -7,6 +7,9 @@ matrix:
         - xvfb
       before_install:
         - pip install --upgrade pip  # doesn't work on windows
+      after_install:
+        - pip install .[docs] # only build docs on linux
+        - (cd docs && make html)
     - os: windows
       language: shell
       before_install:
@@ -15,7 +18,7 @@ matrix:
         - dir ..
         - source $HOME/venv/Scripts/activate
       after_script:
-        - pyinstaller.exe Xi-cam/Xi-cam.spec
+        - pyinstaller.exe Xi-cam.spec
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
 
 
@@ -46,12 +49,11 @@ install:
   - pip install Xi-cam.core/
   - pip install Xi-cam.plugins/
   - pip install Xi-cam.gui/
-  - pip install .[pyqt5,docs,tests,freeze]
+  - pip install .[pyqt5,tests,freeze]
 
 script:
   - 'pylint xicam --errors-only || :'
   - 'pytest . || :'
-  - (cd docs && make html)
   - python setup.py install
 
 after_success:
