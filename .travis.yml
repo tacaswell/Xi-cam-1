@@ -51,7 +51,7 @@ script:
   - if [ $TRAVIS_OS_NAME = "windows"]; then
     pyinstaller.exe Xi-cam/Xi-cam.spec
 after_success:
-  - cd /home/travis/build/lbl-camera/Xi-cam
+  - cd /home/travis/build/synchrotrons/Xi-cam
   - pip install codecov --upgrade  # add coverage integration service
   - codecov
   - pip install coveralls --upgrade  # add another coverage integration service
