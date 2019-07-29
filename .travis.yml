@@ -10,7 +10,7 @@ matrix:
       before_install:
         - choco install python
         - python -m venv $HOME/venv
-        - dir venv
+        - dir
         - source $HOME/venv/Scripts/activate
       after_script:
         - pyinstaller.exe Xi-cam/Xi-cam.spec
