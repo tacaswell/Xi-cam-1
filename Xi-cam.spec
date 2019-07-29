@@ -49,7 +49,7 @@ datas_dst.extend(['plugins']*len(markerfiles))
 
 
 a = Analysis(['run_xicam.py'],
-             pathex=[os.getenv('HOME']),
+             pathex=[os.getenv('HOME')],
              binaries=[],
              datas=zip(datas_src, datas_dst),
              hiddenimports=['pandas._libs.tslibs.timedeltas',
