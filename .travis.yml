@@ -7,6 +7,8 @@ matrix:
       language: shell
       before_install:
         - choco install python
+        - python -m venv venv
+        - source $HOME/venv/Scripts/activate
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
 
 
