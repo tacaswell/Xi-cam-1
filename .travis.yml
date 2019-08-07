@@ -20,10 +20,11 @@ install:
 - pip install git+https://github.com/lbl-camera/Xi-cam.plugins.git
 - pip install git+https://github.com/lbl-camera/Xi-cam.gui.git
 - pip install .[pyqt5,docs,tests]
+services:
+- xvfb
 script:
 - pip install pylint
 - 'pylint xicam --errors-only || :'
-- sh -e /etc/init.d/xvfb start
 - sleep 3
 - 'pytest . || :'
 - pip install -e .[dev]
