@@ -18,7 +18,7 @@ matrix:
         - dir ..
         - source $HOME/venv/Scripts/activate
       after_script:
-        - pyinstaller.exe Xi-cam.spec
+        - pyinstaller --clean --onefile --noconsole --paths C:\Windows\System32\downlevel Xi-cam.spec
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
 
 
