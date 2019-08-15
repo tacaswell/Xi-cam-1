@@ -69,5 +69,3 @@ deploy:
   on:
     tags: true
     os: linux
-
-# ping!
