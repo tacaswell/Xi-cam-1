@@ -8,4 +8,4 @@ This method  takes in the deserialized settings and repopulates the widget.
 ### apply
 This method applies the settings.
 ### toState
-This method prepares the settings in a way, that can be serialized by cloudpickle and returns them.
+This method prepares the settings in a way that can be serialized by cloudpickle and returns them.
